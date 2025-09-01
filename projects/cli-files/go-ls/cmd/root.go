@@ -8,11 +8,18 @@ import (
 
 func Execute() {
 	/*
+		0. pass dir as an argument
 		1. read directory
 		2. display content to sdtout
 	*/
 
-	files, err := os.ReadDir(".")
+	arg := os.Args[1]
+
+	if len(os.Args) > 2 {
+		log.Fatal("Only one argument is allowed")
+	}
+
+	files, err := os.ReadDir(arg)
 
 	if err != nil {
 		log.Fatalf("Error reading directory %s", err)
